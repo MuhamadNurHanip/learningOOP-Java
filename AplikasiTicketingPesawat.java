@@ -85,7 +85,7 @@ public class AplikasiTicketingPesawat { //kelas utama yg berisi method - method
         jadwalPenerbangan.add(pesawat);
     }
 
-    public void tampilkanJadwal() { //mencetak infomrasi jadwal penerbangan tersimpan dalam koleksi 
+    public void tampilkanJadwal() { //mencetak informasi jadwal penerbangan tersimpan dalam koleksi 
         System.out.println("-----Jadwal Penerbangan Hari ini-----");
         System.out.println("No\tTujuan\t\t\tPesawat\t\tJam\t\tHarga");
         for (int i = 0; i < jadwalPenerbangan.size(); i++) {
