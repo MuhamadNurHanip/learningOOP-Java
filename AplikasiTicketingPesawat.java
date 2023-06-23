@@ -1,4 +1,4 @@
-// Menggunakan konsep Array, Pencarian, Sorting,
+// Menggunakan konsep Array, Pencarian, dan Sorting
 import java.util.*; //import kelas-kelas utilitas dalam java
 import java.util.ArrayList; //import array menggunakan arrayList  
 import java.util.Collections; //import kelas Collections dari paket java utils yang untuk memanipulasi objek koleksi(list, Set, Map) 
@@ -90,7 +90,7 @@ public class AplikasiTicketingPesawat { //kelas utama yg berisi method - method
         System.out.println("No\tTujuan\t\t\tPesawat\t\tJam\t\tHarga");
         for (int i = 0; i < jadwalPenerbangan.size(); i++) {
             Pesawat p = jadwalPenerbangan.get(i);
-            System.out.printf("%d.\t%s\t%s\t\t%s\t\t%d%n", i + 1, p.getTujuan(), p.getPesawat(), p.getJam(), p.getHarga());
+            System.out.printf("%d.\t%s\t%s\t\t%s\t\t%d%n", i + 1, p.getTujuan(), p.getPesawat(), p.getJam(), p.getHarga()); //tidak menampilkan kode tiket 
         }
     }
 
@@ -163,8 +163,8 @@ public class AplikasiTicketingPesawat { //kelas utama yg berisi method - method
 // fungsi utama 
     public static void main(String[] args) {
         
-        AplikasiTicketingPesawat aplikasi = new AplikasiTicketingPesawat();
-        Scanner scanner = new Scanner(System.in);
+        AplikasiTicketingPesawat aplikasi = new AplikasiTicketingPesawat(); //membuat objek baru dari kelas AplikasiTicketingPesawat
+        Scanner scanner = new Scanner(System.in); // membuat objek scanner untuk menerima inputan 
 
         aplikasi.tambahPesawat(new Pesawat("Jakarta - Banyuwangi", "Garuda Indonesia", "08:00", "GA123", 100000));
         aplikasi.tambahPesawat(new Pesawat("Jakarta - Surabaya",   "Lion Air",         "09:30", "JT456", 80000));
