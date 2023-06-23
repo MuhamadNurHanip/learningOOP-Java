@@ -1,12 +1,11 @@
 // Menggunakan konsep Array, Pencarian, Sorting,
-import java.util.*;
-import java.util.LinkedList;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*; //import kelas-kelas utilitas dalam java
+import java.util.ArrayList; //import array menggunakan arrayList  
+import java.util.Collections; //import kelas Collections dari paket java utils yang untuk memanipulasi objek koleksi(list, Set, Map) 
+import java.util.Comparator; // untuk membandingkan dua objek tujuan pengurutan 
+import java.util.List; //import  antarmuka yang mewakili koleksi berurutan dan menyediakan operasi dasar untuk memanipulasi daftar elemen
 
-class Pesawat {
+class Pesawat { // kelas pesawat
     private String tujuan;
     private String pesawat;
     private String jam;
@@ -42,7 +41,7 @@ class Pesawat {
     }
 }
 
-class Penumpang {
+class Penumpang { //kelas Penumpang 
     private String nama;
     private String kodeTiket;
     private String noKTP;
@@ -72,21 +71,21 @@ class Penumpang {
     }
 }
 
-public class AplikasiTicketingPesawat {
-    private List<Pesawat> jadwalPenerbangan;
-    private List<Penumpang> daftarPenumpang;
+public class AplikasiTicketingPesawat { //kelas utama yg berisi method - method
+    private List<Pesawat> jadwalPenerbangan; //array untuk wadah menyimpan data objek secara dinamis 
+    private List<Penumpang> daftarPenumpang; //array untuk wadah menyimpan data objek secara dinamis
 
-    public AplikasiTicketingPesawat() {
+    public AplikasiTicketingPesawat() {  //konstruktor 
         jadwalPenerbangan = new ArrayList<>();
         daftarPenumpang = new ArrayList<>();
 
     }
 
-    public void tambahPesawat(Pesawat pesawat) {
+    public void tambahPesawat(Pesawat pesawat) { // menambahkan objek pesawat ke dalam koleksi 
         jadwalPenerbangan.add(pesawat);
     }
 
-    public void tampilkanJadwal() {
+    public void tampilkanJadwal() { //mencetak infomrasi jadwal penerbangan tersimpan dalam koleksi 
         System.out.println("-----Jadwal Penerbangan Hari ini-----");
         System.out.println("No\tTujuan\t\t\tPesawat\t\tJam\t\tHarga");
         for (int i = 0; i < jadwalPenerbangan.size(); i++) {
@@ -95,7 +94,7 @@ public class AplikasiTicketingPesawat {
         }
     }
 
-    public Pesawat cariPesawatByKodeTiket(String kodeTiket) {
+    public Pesawat cariPesawatByKodeTiket(String kodeTiket) { // melakukan pencarian pesawat berdasarkan kode tiket yang diberikan sebagai parameter
         for (int i = 0; i < jadwalPenerbangan.size(); i++) {
             Pesawat p = jadwalPenerbangan.get(i);
             if (p.getKodeTiket().equals(kodeTiket)) {
@@ -105,12 +104,12 @@ public class AplikasiTicketingPesawat {
         return null;
     }
 
-    public void sortingPesawatByHarga() {
-        Collections.sort(jadwalPenerbangan, Comparator.comparingInt(Pesawat::getHarga));
+    public void sortingPesawatByHarga() { //metode sorting untuk mengurutkan jadwal penerbangan berdasarkan harga tiket
+        Collections.sort(jadwalPenerbangan, Comparator.comparingInt(Pesawat::getHarga)); //comparator sebagai kunci pengurutan yg membandingkan harga tiket dari objek pesawat dan getHarga
         System.out.println("Jadwal penerbangan berhasil diurutkan berdasarkan harga.");
     }
 
-    public void tampilkanJadwalTerurut() {
+    public void tampilkanJadwalTerurut() { //untuk menampilkan jadwal penerbangan yang telah diurutkan berdasarkan harga tiket 
         List<Pesawat> jadwalTerurut = new ArrayList<>(jadwalPenerbangan);
         Collections.sort(jadwalTerurut, Comparator.comparingInt(Pesawat::getHarga));
 
@@ -122,7 +121,7 @@ public class AplikasiTicketingPesawat {
         }
     }
 
-    public void pesanTiket(String kodeTiket, String nama, String noKTP, String noTelepon) {
+    public void pesanTiket(String kodeTiket, String nama, String noKTP, String noTelepon) { // untuk memesan tiket dengna parameter yang diberikan 
         Pesawat pesawatobj = this.cariPesawatByKodeTiket(kodeTiket);
         if (pesawatobj != null) {
             Penumpang penumpang = new Penumpang(nama, kodeTiket, noKTP, noTelepon);
@@ -133,7 +132,7 @@ public class AplikasiTicketingPesawat {
         }
     }
 
-    public void batalPesanTiket(String kodeTiket) {
+    public void batalPesanTiket(String kodeTiket) { //membatalkan tiket dengan parameter diberikan 
     Penumpang penumpang = null;
     for (int i = 0; i < daftarPenumpang.size(); i++) {
         Penumpang p = daftarPenumpang.get(i);
@@ -143,15 +142,15 @@ public class AplikasiTicketingPesawat {
         }
     }
 
-    if (penumpang != null) {
+    if (penumpang != null) { // jika benar maka dibatalkan 
         daftarPenumpang.remove(penumpang);
         System.out.println("Pemesanan tiket dengan kode tiket " + kodeTiket + " telah dibatalkan.");
-    } else {
+    } else { // jika salah tidak ditemukan 
         System.out.println("Tidak ditemukan pemesanan tiket dengan kode tiket " + kodeTiket + ".");
     }
 }
 
-    public void tampilkanDaftarPenumpang() {
+    public void tampilkanDaftarPenumpang() { // menampilkan daftar penumpang yang telah pesan tiket 
         System.out.println("-----Daftar Penumpang-----");
         System.out.println("No\tNama\t\tKode Tiket\tNo KTP\t\tNo Telepon");
         for (int i = 0; i < daftarPenumpang.size(); i++) {
@@ -192,7 +191,7 @@ public class AplikasiTicketingPesawat {
             System.out.println("4. Pesan Tiket");
             System.out.println("5. Batal Pesan Tiket");
             System.out.println("6. Tampilkan Daftar Penumpang");
-            System.out.println("7. Antrian Penumpang Memasuki Pintu Pesawat ");
+
             System.out.println("0. Keluar");
             System.out.print("Pilih menu (1/2/3/4/5/6/7/0) : ");
             int menu = scanner.nextInt();
@@ -271,10 +270,6 @@ case 4:
     break;
 case 6:
     aplikasi.tampilkanDaftarPenumpang();
-    break;
-case 7:
-    // Implementasi antrian penumpang
-    
     break;
 case 0:
     System.out.println("Terima kasih telah menggunakan Layanan Aplikasi Ticketing Pesawat Kelas Eksekutif.");
