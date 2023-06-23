@@ -1,5 +1,4 @@
 // Menggunakan konsep Array, Pencarian, Sorting,
-
 import java.util.*;
 import java.util.LinkedList;
 import java.util.ArrayList;
@@ -193,6 +192,7 @@ public class AplikasiTicketingPesawat {
             System.out.println("4. Pesan Tiket");
             System.out.println("5. Batal Pesan Tiket");
             System.out.println("6. Tampilkan Daftar Penumpang");
+            System.out.println("7. Antrian Penumpang Memasuki Pintu Pesawat ");
             System.out.println("0. Keluar");
             System.out.print("Pilih menu (1/2/3/4/5/6/7/0) : ");
             int menu = scanner.nextInt();
@@ -274,6 +274,7 @@ case 6:
     break;
 case 7:
     // Implementasi antrian penumpang
+    
     break;
 case 0:
     System.out.println("Terima kasih telah menggunakan Layanan Aplikasi Ticketing Pesawat Kelas Eksekutif.");
